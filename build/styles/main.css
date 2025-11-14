@@ -1,4 +1,3 @@
-/* main.css */
 .marginBotton8 {
   margin-bottom: 8px;
 }
@@ -12,29 +11,20 @@
   font-family: 'Roboto', sans-serif;
 }
 body {
-  /* Gradiente e configurações de tamanho continuam os mesmos */
+  /* Gradiente linear de 5 cores */
   background: linear-gradient(45deg, #1A237E, #4A148C, #004D40, #FF6F00, #C62828);
   background-size: 400% 400%;
-  /* Aumentei a duração para 30s para um movimento mais lento e suave */
-  animation: gradient-animation 30s ease infinite;
+  /* Fluxo contínuo para a esquerda */
+  animation: gradient-animation 30s linear infinite;
+  /* Fixa o fundo para que o conteúdo possa rolar sobre ele */
+  background-attachment: fixed;
   color: #f1f2f6;
 }
-/* CHAVE DA ANIMAÇÃO AJUSTADA:
-Para criar a sensação de "infinito" para um lado, 
-mantemos o movimento consistente em uma direção (ex: diagonal superior direita). 
-O ciclo de 0% a 100% no background-position cria o loop contínuo.
-*/
 @keyframes gradient-animation {
   0% {
-    /* Começa no canto inferior esquerdo */
-    background-position: 0% 50%;
-  }
-  50% {
-    /* Move-se para o canto superior direito */
     background-position: 100% 50%;
   }
   100% {
-    /* Retorna ao estado inicial. Como a transição é suave, o loop parece infinito. */
     background-position: 0% 50%;
   }
 }
@@ -45,14 +35,17 @@ li {
   max-width: 960px;
   width: 100%;
   margin: 0 auto;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  z-index: 2;
+  /* CORREÇÃO PARA PERMITIR A ROLAGEM */
+  display: block;
+  /* Garante que o container se comporta como bloco */
+  padding-top: 56px;
+  /* Espaçamento no topo */
+  padding-bottom: 56px;
+  /* Espaçamento na base */
   position: relative;
+  z-index: 2;
+  /* Garante que o conteúdo fique acima do fundo */
 }
-/* ... restante do seu CSS ... */
 @media (max-width: 767px) {
   .container {
     max-width: 70%;
@@ -100,8 +93,7 @@ li {
   transform: scale(1.2);
 }
 .projects-list {
-  margin-top: 32px
-    ;
+  margin-top: 32px;
 }
 .projects-list-item a {
   text-decoration: none;

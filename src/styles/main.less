@@ -3,246 +3,130 @@
 @brackpointMobile: ~"(max-width: 767px)";
 @brackpointTablet: ~"(min-windth: 768px) and (max-width: 1023px)";
 
-// .marginBotton8 {
-//     margin-bottom: 8px;
-// }
-// .fontSize14 {
-//     font-size: 14px;
-// }
-
-// *{
-//     margin: 0;
-//     padding: 0;
-//     box-sizing: border-box;
-//     font-family: 'Roboto', sans-serif;
-// }
-
-// body {
-//     // background-color: #color[backgroundColor];
-//     color: #color[textColor];
-// }
-
-// li {
-//     list-style: none; 
-// }
-
-// .container {
-//     max-width: 960px;
-//     width: 100%;
-//     margin: 0 auto;
-//     height: 100vh;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-
-
-
-//     @media @brackpointMobile {
-//         max-width: 70%;
-//     }
-    
-//     @media @brackpointTablet {
-//         max-width: 80%;
-//     }
-
-//     header {
-//         padding-bottom: 24px;
-
-//         .profile-avatar { 
-//             display: block;
-//             margin: 0 auto 24px;
-//             border-radius: 50%;
-//         }
-//     }
-    
-// }
-
-// .profile-bio {
-//     text-align: center;
-//     &-name {
-//         font-size: 16px;
-//         .marginBotton8();
-//     }
-
-//     &-subtitle {
-//         .fontSize14();
-//         .marginBotton8();
-//     }
-
-//     &-description {
-//         .fontSize14();
-//         opacity: 0.7;
-//     }
-// }
-
-// .social-links {
-//     display: flex;
-//     justify-content: space-between;
-//     max-width: 240px;
-//     width: 100%;
-//     margin: 0 auto;
-
-//     li {
-
-//         img {
-//             transition: all ease 0.3s;
-//             &:hover {
-//                 transform: scale(1.2);
-//             }
-//         };
-//     }
-// }
-
-// .projects-list {
-//     margin-top: 32px
-//     ;
-//     &-item {
-//         a {
-//             text-decoration: none;
-//             background-color: #color[buttonColor];
-//             display: block;
-//             padding: 16px 20px;
-//             margin-bottom: 16px;
-//             text-align: center;
-//             color: #color[textColor];
-//             font-weight: bold;
-//             border-radius: 30px;
-//             border: 2px solid #color[buttonColor];
-//             transition: all ease .5s;
-
-//             &:hover {
-//                 background-color: transparent;
-//                 color: #color[buttonColor];
-//             }
-//         }
-//     }
-// }
-
-/* main.css */
-
-// ---------------------------codigo-novo-----------------
-
 .marginBotton8 {
     margin-bottom: 8px;
 }
 .fontSize14 {
     font-size: 14px;
 }
-* {
+
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
+
+// NOVO: ANIMAÇÃO DE FUNDO
 body {
-  /* Gradiente e configurações de tamanho continuam os mesmos */
+    /* Gradiente linear de 5 cores */
     background: linear-gradient(45deg, #1A237E, #4A148C, #004D40, #FF6F00, #C62828);
     background-size: 400% 400%;
-
-  /* Aumentei a duração para 30s para um movimento mais lento e suave */
-    animation: gradient-animation 30s ease infinite; 
-    color: #f1f2f6;
+    /* Fluxo contínuo para a esquerda */
+    animation: gradient-animation 30s linear infinite; 
+    /* Fixa o fundo para que o conteúdo possa rolar sobre ele */
+    background-attachment: fixed;
+    color: #color[textColor];
 }
 
-/* CHAVE DA ANIMAÇÃO AJUSTADA:
-Para criar a sensação de "infinito" para um lado, 
-mantemos o movimento consistente em uma direção (ex: diagonal superior direita). 
-O ciclo de 0% a 100% no background-position cria o loop contínuo.
-*/
+// NOVO: KEYFRAMES
 @keyframes gradient-animation {
     0% {
-    /* Começa no canto inferior esquerdo */
-    background-position: 0% 50%;
-    }
-    50% {
-    /* Move-se para o canto superior direito */
     background-position: 100% 50%;
     }
     100% {
-    /* Retorna ao estado inicial. Como a transição é suave, o loop parece infinito. */
     background-position: 0% 50%;
     }
 }
 
 li {
-    list-style: none;
+    list-style: none; 
 }
+
 .container {
     max-width: 960px;
     width: 100%;
     margin: 0 auto;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 2; 
+    
+    /* CORREÇÃO PARA PERMITIR A ROLAGEM */
+    display: block; /* Garante que o container se comporta como bloco */
+    padding-top: 56px; /* Espaçamento no topo */
+    padding-bottom: 56px; /* Espaçamento na base */
     position: relative; 
-}
-/* ... restante do seu CSS ... */
-@media (max-width: 767px) {
-    .container {
-    max-width: 70%;
+    z-index: 2; /* Garante que o conteúdo fique acima do fundo */
+
+    @media @brackpointMobile {
+        max-width: 70%;
+    }
+    
+    @media @brackpointTablet {
+        max-width: 80%;
+    }
+
+    header {
+        padding-bottom: 24px;
+        .profile-avatar { 
+            display: block;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+        }
     }
 }
-@media (min-windth: 768px) and (max-width: 1023px) {
-    .container {
-    max-width: 80%;
-    }
-}
-.container header {
-    padding-bottom: 24px;
-}
-.container header .profile-avatar {
-    display: block;
-    margin: 0 auto 24px;
-    border-radius: 50%;
-}
+
 .profile-bio {
     text-align: center;
+    &-name {
+        font-size: 16px;
+        .marginBotton8();
+    }
+
+    &-subtitle {
+        .fontSize14();
+        .marginBotton8();
+    }
+
+    &-description {
+        .fontSize14();
+        opacity: 0.7;
+    }
 }
-.profile-bio-name {
-    font-size: 16px;
-    margin-bottom: 8px;
-}
-.profile-bio-subtitle {
-    font-size: 14px;
-    margin-bottom: 8px;
-}
-.profile-bio-description {
-    font-size: 14px;
-    opacity: 0.7;
-}
+
 .social-links {
     display: flex;
     justify-content: space-between;
     max-width: 240px;
     width: 100%;
     margin: 0 auto;
+    li {
+
+        img {
+            transition: all ease 0.3s;
+            &:hover {
+                transform: scale(1.2);
+            }
+        };
+    }
 }
-.social-links li img {
-    transition: all ease 0.3s;
-}
-.social-links li img:hover {
-    transform: scale(1.2);
-}
+
 .projects-list {
-    margin-top: 32px
-    ;
-}
-.projects-list-item a {
-    text-decoration: none;
-    background-color: #70a1ff;
-    display: block;
-    padding: 16px 20px;
-    margin-bottom: 16px;
-    text-align: center;
-    color: #f1f2f6;
-    font-weight: bold;
-    border-radius: 30px;
-    border: 2px solid #70a1ff;
-    transition: all ease 0.5s;
-}
-.projects-list-item a:hover {
-    background-color: transparent;
-    color: #70a1ff;
+    margin-top: 32px;
+    &-item {
+        a {
+            text-decoration: none;
+            background-color: #color[buttonColor];
+            display: block;
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            text-align: center;
+            color: #color[textColor];
+            font-weight: bold;
+            border-radius: 30px;
+            border: 2px solid #color[buttonColor];
+            transition: all ease .5s;
+            &:hover {
+                background-color: transparent;
+                color: #color[buttonColor];
+            }
+        }
+    }
 }
