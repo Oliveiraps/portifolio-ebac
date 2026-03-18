@@ -19,24 +19,8 @@
 
 // NOVO: ANIMAÇÃO DE FUNDO
 body {
-    /* Gradiente linear de 5 cores */
-    background: linear-gradient(45deg, #1A237E, #4A148C, #004D40, #FF6F00, #C62828);
-    background-size: 400% 400%;
-    /* Fluxo contínuo para a esquerda */
-    animation: gradient-animation 30s linear infinite; 
-    /* Fixa o fundo para que o conteúdo possa rolar sobre ele */
-    background-attachment: fixed;
+    background-color: #color[backgroundColor];
     color: #color[textColor];
-}
-
-// NOVO: KEYFRAMES
-@keyframes gradient-animation {
-    0% {
-    background-position: 100% 50%;
-    }
-    100% {
-    background-position: 0% 50%;
-    }
 }
 
 li {
