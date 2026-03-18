@@ -11,8 +11,8 @@
   font-family: 'Roboto', sans-serif;
 }
 body {
-  background-color: #2C3A47;
-  color: #CAD3C8;
+  background-color: #3742fa;
+  color: #f1f2f6;
 }
 li {
   list-style: none;
@@ -83,18 +83,18 @@ li {
 }
 .projects-list-item a {
   text-decoration: none;
-  background-color: #58B19F;
+  background-color: #70a1ff;
   display: block;
   padding: 16px 20px;
   margin-bottom: 16px;
   text-align: center;
-  color: #CAD3C8;
+  color: #f1f2f6;
   font-weight: bold;
   border-radius: 30px;
-  border: 2px solid #58B19F;
+  border: 2px solid #70a1ff;
   transition: all ease 0.5s;
 }
 .projects-list-item a:hover {
   background-color: transparent;
-  color: #58B19F;
+  color: #70a1ff;
 }
